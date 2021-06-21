@@ -13,6 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
+//TODO: Fix this command. Its calculating the gwei wrong somehow and not notifying.
 package cmd
 
 import (
@@ -32,7 +34,10 @@ var userPrice int64
 var gasCheckerCmd = &cobra.Command{
 	Use:   "gasChecker",
 	Short: "Notifies the user for average Ethereum gas prices under a certain price.",
-	Long:  ` `,
+	Long: `The ethNotify gasChecker command notifies the user when average gas price 
+	below a certain threshold. Use the --price flag to set the threshold price. eg; 
+	
+	"ethNotify gasChecker --price=100" //checks for average gas prices under 100 gwei.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("Checking for average gas prices under %v\n", userPrice)
 		notification := &toast.Notification{
